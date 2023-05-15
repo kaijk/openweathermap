@@ -12,7 +12,7 @@ sensor:
       - hourly
       - alerts
     value_template: "{{ value_json['current']['dt'] | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
-    # Replace <...> with your Lat, Lon, and API key.  Chage units to metric if desired, and lang as well
+    # Replace <xxx> with your Lat, Lon, and API key.  Chage units to metric if desired, and lang as well
     resource: https://api.openweathermap.org/data/3.0/onecall?lat=<Your_Lat>&lon=<Your_Lon>&exclude=minutely&appid=<Your_ONE_CALL_API_KEY>&units=imperial&lang=en
     # make sure that all sources makeing API calls using your API_KEY do not exceed the ONE_CALL limit unless you want to pay for more frequent updates.
     scan_interval: 3600
