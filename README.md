@@ -3,7 +3,7 @@ This repositority provides templates and a script to create Current, Daily, Hour
 
 A REST Call to the Openweathermap API is used to create an HA entity called `openweathermap_report`. The JSON data from the REST Call is loaded into an entity attribute.  Then `template sensors` parse the attribute for their specific data. 
 
-Entity naming conventions follow a mashup of the legacy Dark Sky and Openweathermap approaches.  That is, Dary Sky used temperature_0d, Openweathermap uses temp for temperature. This uses temp_0d.
+Entity naming conventions follow a mashup of the legacy Dark Sky, and the Openweathermap approaches.  That is, Dary Sky used temperature_0d, Openweathermap uses temp for temperature. This uses temp_0d.
 
 The build is modular and completely controlled by the `createopenweather` shell script.  The script is a series of mostly `sed` commands that take master files, set the desired day or hour, and append them to the `openweathermap.yaml` package. If you don't like the naming convention, or wish to exclude certain weather attributes, just edit the openweathercurrent.yaml, openweatherhourly0.yaml or openweatherdaily0.yaml files.
 
