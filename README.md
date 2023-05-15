@@ -5,9 +5,9 @@ A REST Call to the Openweathermap API is used to create an HA entity called `ope
 
 Entity naming conventions follow a mashup of the legacy Dark Sky, and the Openweathermap approaches.  That is, Dary Sky used temperature_0d, Openweathermap uses temp for temperature. This uses temp_0d.
 
-The build is modular and controlled by the `createopenweather` shell script.  The script is a series of mostly `sed` commands that take master files, set the desired day or hour, and append them to the `openweathermap.yaml` package. Edit the script if you wish to change the number of days/hours, etc., or to eliminate a whole category, for example, hourly.  
+The build is modular and controlled by the `createopenweather` shell script.  The script is a series of mostly `sed` commands that take master files, set the desired day or hour, and append them to the `openweathermap.yaml` package. Edit the script to change the number of days/hours, etc., or to eliminate a whole category, for example, hourly.  
 
-Scroll through the yaml files.  If you don't like the naming convention, or wish to exclude certain weather attributes, just edit the openweathercurrent.yaml, openweatherhourly0.yaml or openweatherdaily0.yaml files.
+Scroll through the yaml files.  To change naming conventions, or to exclude certain weather attributes, just edit the openweathercurrent.yaml, openweatherhourly0.yaml or openweatherdaily0.yaml files.
 
 You *MUST* edit `openweatherheader.yaml` to specify your ONE-CALL API_KEY, your Latitude and Longitude, your Units, and Language along with any elements you desire to exclude from the data requested from the API (for example minutely).  After editing, pasting the https:... string into a browser should return a JSON result.  
 
