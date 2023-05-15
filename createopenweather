@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# REST Call, etc.
+cp openweatherheader.yaml openweather.yaml
+#
+# Current Conditions
+cat *current.yaml      >> openweather.yaml
+#
+# Daily forecasts 
+cat *daily0.yaml       >> openweather.yaml
+sed -e 's/\[0\]/[1]/' *daily0.yaml | sed -e 's/ 0d/ 1d/' >> openweather.yaml
+sed -e 's/\[0\]/[2]/' *daily0.yaml | sed -e 's/ 0d/ 2d/' >> openweather.yaml
+sed -e 's/\[0\]/[3]/' *daily0.yaml | sed -e 's/ 0d/ 3d/' >> openweather.yaml
+sed -e 's/\[0\]/[4]/' *daily0.yaml | sed -e 's/ 0d/ 4d/' >> openweather.yaml
+sed -e 's/\[0\]/[5]/' *daily0.yaml | sed -e 's/ 0d/ 5d/' >> openweather.yaml
+sed -e 's/\[0\]/[6]/' *daily0.yaml | sed -e 's/ 0d/ 6d/' >> openweather.yaml
+sed -e 's/\[0\]/[7]/' *daily0.yaml | sed -e 's/ 0d/ 7d/' >> openweather.yaml
+#
+# Hourly Forecasts
+cat *hourly0.yaml >> openweather.yaml
+sed -e 's/\[1\]/[2]/'  *hourly0.yaml | sed -e 's/ 0h/ 1h/'  >> openweather.yaml
+sed -e 's/\[1\]/[3]/'  *hourly0.yaml | sed -e 's/ 0h/ 2h/'  >> openweather.yaml
+sed -e 's/\[1\]/[4]/'  *hourly0.yaml | sed -e 's/ 0h/ 3h/'  >> openweather.yaml
+sed -e 's/\[1\]/[5]/'  *hourly0.yaml | sed -e 's/ 0h/ 4h/'  >> openweather.yaml
+sed -e 's/\[1\]/[6]/'  *hourly0.yaml | sed -e 's/ 0h/ 5h/'  >> openweather.yaml
+sed -e 's/\[1\]/[7]/'  *hourly0.yaml | sed -e 's/ 0h/ 6h/'  >> openweather.yaml
+sed -e 's/\[1\]/[8]/'  *hourly0.yaml | sed -e 's/ 0h/ 7h/'  >> openweather.yaml
+sed -e 's/\[1\]/[9]/'  *hourly0.yaml | sed -e 's/ 0h/ 8h/'  >> openweather.yaml
+sed -e 's/\[1\]/[10]/' *hourly0.yaml | sed -e 's/ 0h/ 9h/'  >> openweather.yaml
+sed -e 's/\[1\]/[11]/' *hourly0.yaml | sed -e 's/ 0h/ 10h/' >> openweather.yaml
+sed -e 's/\[1\]/[12]/' *hourly0.yaml | sed -e 's/ 0h/ 11h/' >> openweather.yaml
+sed -e 's/\[1\]/[13]/' *hourly0.yaml | sed -e 's/ 0h/ 12h/' >> openweather.yaml
+#
+# Insert Icons information into all of the above
+sed -i -e "/{# insert_icon_selection #}/ {r openweather_icons.yaml" -e 'N}' openweather.yaml
+#
+# Put the file into the packages directory
+cp openweather.yaml ../packages/openweather.yaml
