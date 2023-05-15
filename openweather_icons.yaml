@@ -1,0 +1,119 @@
+           {% if states('sun.sun') == 'above_horizon' %}
+              {% set daynight = 'day' %}
+           {% else %}
+              {% set daynight = 'night' %}
+           {% endif %}
+           {% if ( id == 800 ) %}
+              clear-{{daynight}}
+           {% elif ( id == 200 ) %}
+              thunderstorm
+           {% elif ( id == 201 ) %}
+              thunderstorm
+           {% elif ( id == 202 ) %}
+              thunderstorm
+           {% elif ( id == 210 ) %}
+              thunderstorm
+           {% elif ( id == 211 ) %}
+              thunderstorm
+           {% elif ( id == 212 ) %}
+              thunderstorm
+           {% elif ( id == 221 ) %}
+              thunderstorm
+           {% elif ( id == 230 ) %}
+              thunderstorm
+           {% elif ( id == 231 ) %}
+              thunderstorm
+           {% elif ( id == 232 ) %}
+              thunderstorm
+           {% elif ( id == 300 ) %}
+              light-showers
+           {% elif ( id == 301 ) %}
+              light-showers
+           {% elif ( id == 302 ) %}
+              light-showers
+           {% elif ( id == 310 ) %}
+              light-showers
+           {% elif ( id == 311 ) %}
+              light-showers
+           {% elif ( id == 312 ) %}
+              showers
+           {% elif ( id == 313 ) %}
+              showers
+           {% elif ( id == 314 ) %}
+              showers
+           {% elif ( id == 321 ) %}
+              showers
+           {% elif ( id == 500 ) %}
+              light-rain
+           {% elif ( id == 501 ) %}
+              rain
+           {% elif ( id == 502 ) %}
+              pouring
+           {% elif ( id == 503 ) %}
+              pouring
+           {% elif ( id == 504 ) %}
+              pouring
+           {% elif ( id == 511 ) %}
+              sleet
+           {% elif ( id == 520 ) %}
+              light-showers
+           {% elif ( id == 521 ) %}
+              light-showers
+           {% elif ( id == 522 ) %}
+              heavy-showers
+           {% elif ( id == 531 ) %}
+              stormy
+           {% elif ( id == 600 ) %}
+              snow
+           {% elif ( id == 601 ) %}
+              snow
+           {% elif ( id == 602 ) %}
+              snow
+           {% elif ( id == 611 ) %}
+              sleet
+           {% elif ( id == 612 ) %}
+              sleet
+           {% elif ( id == 613 ) %}
+              sleet
+           {% elif ( id == 615 ) %}
+              snowy-rainy
+           {% elif ( id == 616 ) %}
+              snowy-rainy
+           {% elif ( id == 620 ) %}
+              snow
+           {% elif ( id == 621 ) %}
+              snow
+           {% elif ( id == 622 ) %}
+              snow
+           {% elif ( id == 701 ) %}
+              showers
+           {% elif ( id == 711 ) %}
+              haze
+           {% elif ( id == 721 ) %}
+              haze
+           {% elif ( id == 731 ) %}
+              dust
+           {% elif ( id == 741 ) %}
+              fog
+           {% elif ( id == 751 ) %}
+              dust
+           {% elif ( id == 761 ) %}
+              dust
+           {% elif ( id == 762 ) %}
+              dust
+           {% elif ( id == 771 ) %}
+              heavy-showers
+           {% elif ( id == 781 ) %}
+              tropical-cyclone
+           {% elif ( id == 801 ) %}
+              mostly-sunny
+           {% elif ( id == 802 ) %}
+              mostly-sunny
+           {% elif ( id == 803 ) %}
+              partly-cloudy-{{daynight}}
+           {% elif ( id == 804 ) %}
+              cloudy
+           {% else %}
+              unknown
+           {% endif %}
+                                                                                                                                                                                                                           57,15         Top
