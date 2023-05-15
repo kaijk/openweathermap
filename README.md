@@ -13,7 +13,7 @@ You *MUST* edit `openweatherheader.yaml` to specify your ONE-CALL API_KEY, your 
 
 Icons are managed in their own, `openweathericons.yaml` file. There are keys in the current, dialy0 and hourly0 files that indicate where the icon entity should be included by `sed`.  Each day, each hour, and current conditions all need their own set of icon mappings.  This approach allows easy remapping or adding of addtional icons in one place.
 
-To use `metric` UOMs edit the yaml files and change the UOMs as needed before running the script.  Also, change the `units` key for the api call in the `header` file to `metric` from `imperial`
+To use `metric` UOMs edit the yaml files and change the UOMs as needed before running the script.  Also, change the `units` key for the api call in the `header` file to `metric` from `imperial`. Note that the precipation data are always returned in metric units for some reason.  They are divided by 25.4 in the yaml files to convert from milimeters to inches. Search for `25.4` and modify the equations for metric.
 
 -----------------
 
