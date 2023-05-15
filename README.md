@@ -1,5 +1,5 @@
 # openweathermap
-This repositority provides templates and a script to create Current, Daily, Hourly, and Alerts `Sensors` for Home Assistant using a One-Call API-KEY from Openweathermap.
+This repositority provides templates and a shell script to create Current, Daily, Hourly, and Alerts `Sensors` for Home Assistant using a One-Call API-KEY from Openweathermap.
 
 A REST Call to the Openweathermap API is used to create an HA entity called `openweathermap_report`. The JSON data from the REST Call is loaded into an entity attribute.  Then `template sensors` parse the attribute for their specific data. 
 
