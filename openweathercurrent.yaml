@@ -1,0 +1,231 @@
+template:
+  sensor:
+# Current Values
+    - name: 'Openweather Temp'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').temp is defined %}      
+           {{ (state_attr('sensor.openweather_report', 'current').temp | float(0) ) | round(1) }}
+        {% else %}
+           0
+        {% endif %} 
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: temperature
+      unit_of_measurement: '°F'
+    - name: 'Openweather Feels Like'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').feels_like is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').feels_like | float(0) ) | round(1) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: temperature
+      unit_of_measurement: '°F'      
+    - name: 'Openweather Pressure'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').pressure is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').pressure | float(0) ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: pressure
+      unit_of_measurement: 'mbar'      
+    - name: 'Openweather Humidity'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').humidity is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').humidity | float(0) ) | round(1) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: humidity
+      unit_of_measurement: '%'
+    - name: 'Openweather Dew Point'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').dew_point is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').dew_point | float(0) ) | round(1) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: temperature
+      unit_of_measurement: '°F'      
+    - name: 'Openweather Clouds'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').clouds is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').clouds | float(0) ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+#     device_class: none
+      unit_of_measurement: '%'      
+    - name: 'Openweather Wind Speed'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').wind_speed is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').wind_speed | float(0) ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: wind_speed
+      unit_of_measurement: 'mph'
+    - name: 'Openweather Wind Gust'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').wind_gust is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').wind_gust | float(0) ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: wind_speed
+      unit_of_measurement: 'mph'      
+    - name: 'Openweather Wind Deg'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').wind_deg is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').wind_deg | float(0) ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+#     device_class: none
+      unit_of_measurement: 'deg'      
+    - name: 'Openweather Description'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').weather[0]['description'] is defined %}
+           {{ state_attr('sensor.openweather_report', 'current').weather[0]['description'] | title }}
+        {% else %}
+           {{ "None" }}
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+    - name: 'Openweather Text'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').weather[0]['main'] is defined %}
+           {{ state_attr('sensor.openweather_report', 'current').weather[0]['main'] }}
+        {% else %}
+           {{ "NA" }}
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+        
+
+    - name: 'Openweather Icon'
+      state: > 
+        {% if state_attr('sensor.openweather_report', 'current').weather[0]['id'] is defined %}
+           {# {{ icon( state_attr('sensor.openweather_report', 'current').weather[0]['id'] ) }} #}
+           {% set id = state_attr('sensor.openweather_report', 'current').weather[0]['id'] %}
+        {# insert_icon_selection #}
+        {% else %}
+           {{ "weather" }}
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+
+# Use sum of rain and snow if both appear to compute precip intensity for weather reporting
+# Or, use the one or the other if present.  
+# Openweather reports in mm/hr and omits the fields if none is expected
+    - name: 'Openweather Precip Intensity'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').rain is defined and
+              state_attr('sensor.openweather_report', 'current').snow is defined %}
+           {{ (( state_attr('sensor.openweather_report', 'current').rain['1h'] | float(0) +
+                state_attr('sensor.openweather_report', 'current').snow['1h'] | float(0) ) / 25.4 ) | round(2) }}
+        {% elif state_attr('sensor.openweather_report', 'current').rain is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').rain['1h'] | float(0) / 25.4 ) | round(2) }}
+        {% elif state_attr('sensor.openweather_report', 'current').snow is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').snow['1h'] | float(0) / 25.4 ) | round(2) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: precipitation
+      unit_of_measurement: 'in'
+    - name: 'Openweather Rain'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').rain is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').rain['1h'] | float(0) / 25.4 ) | round(3)}}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: precipitation
+      unit_of_measurement: 'in'        
+    - name: 'Openweather Snow'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').snow is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').snow['1h'] | float(0) / 25.4 ) | round(3) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: precipitation
+      unit_of_measurement: 'in'
+    - name: 'Openweather Visibility'
+      # convert reported meters to miles
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').visibility is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').visibility | float(0) * 0.000621 ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+      device_class: distance
+      unit_of_measurement: 'mi'      
+    - name: 'Openweather UVI'
+      state: >
+        {% if state_attr('sensor.openweather_report', 'current').uvi is defined %}
+           {{ ( state_attr('sensor.openweather_report', 'current').uvi | float(0) ) | round(0) }}
+        {% else %}
+           0
+        {% endif %}
+      attributes:
+        dt:        "{{ state_attr('sensor.openweather_report', 'current').dt }}"
+        date_time: "{{ state_attr('sensor.openweather_report', 'current').dt | timestamp_custom('%Y-%m-%d %H:%M', true) }}"
+      state_class:  measurement
+#     device_class: none
+      unit_of_measurement: 'uvi'      
+      
